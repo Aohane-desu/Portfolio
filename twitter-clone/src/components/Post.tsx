@@ -1,6 +1,14 @@
 import Navbar from "./Navbar";
 import Tweet from "./Tweet";
-import { useLocation } from "react-router-dom";
+import {
+  collection,
+  onSnapshot,
+  limit,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { db } from "../hooks/firebase";
+import { useEffect, useState } from "react";
 
 type timeStamp = {
   seconds: number;
@@ -12,8 +20,17 @@ type dataProps = {
   createdAt: timeStamp;
 };
 const Post = () => {
-  const location = useLocation();
-  const { message }: { message: dataProps[] } = location.state;
+  const [message, setMessage] = useState<dataProps[]>([]);
+
+  useEffect(() => {
+    //データ取得
+    const postData = collection(db, "message");
+    const dataQuery = query(postData, orderBy("createdAt", "desc"), limit(10));
+    //リアルタイムで取得
+    onSnapshot(dataQuery, (tweet) => {
+      setMessage(tweet.docs.map((doc) => doc.data() as dataProps));
+    });
+  }, []);
   return (
     <>
       <Navbar />

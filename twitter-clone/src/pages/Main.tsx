@@ -1,18 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-type timeStamp = {
-  seconds: number;
-  nanoseconds: number;
-};
-type dataProps = {
-  text: string;
-  nickName: string;
-  createdAt: timeStamp;
-};
-const Main = ({ message }: { message: dataProps[] }) => {
+
+const Main = () => {
   const navigation = useNavigate();
   const sendTwitter = () => {
-    navigation("/post", { state: { message: message } });
+    navigation("/post");
   };
   return (
     <>
