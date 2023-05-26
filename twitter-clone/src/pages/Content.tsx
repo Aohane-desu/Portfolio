@@ -26,7 +26,7 @@ const Content = () => {
 
     if (currentUser.displayName) {
       alert("ニックネームを登録しました。");
-      navigate("/");
+      navigate("/main");
     }
   };
 

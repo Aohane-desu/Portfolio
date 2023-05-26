@@ -39,7 +39,7 @@ const Register = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (currentUser) {
-      navigate("/");
+      navigate("/main");
     }
   }, [currentUser]);
 

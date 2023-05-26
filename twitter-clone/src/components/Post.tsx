@@ -37,8 +37,8 @@ const Post = () => {
       <div className="w-[90vw] h-screen mx-auto mt-10 ">
         {message.map((data) => (
           <div className="p-10 mt-10 border" key={Math.random()}>
-            <p className="text-3xl">{data.nickName}</p>
-            <p>{data.text}</p>
+            {/* <p className="text-3xl">{data.nickName}</p> */}
+            <p className="text-2xl">{data.text}</p>
           </div>
         ))}
 

@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await auth.signOut();
-      navigate("/login");
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 left-0 h-10 shadow flex items-center justify-between px-5">
       <div className="flex">
-        <Link to="/" className="pr-10">
+        <Link to="/main" className="pr-10">
           <FaKiwiBird color={"green"} />
         </Link>
         <AiFillHeart color={"green"} />
