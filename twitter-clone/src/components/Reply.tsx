@@ -1,27 +1,43 @@
 import { db, useAuth } from "../hooks/firebase";
 import { useState } from "react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  serverTimestamp,
+  getDocs,
+  setDoc,
+  doc,
+  query,
+} from "firebase/firestore";
 
-const Tweet = () => {
+const Reply = (id: any) => {
   const [text, setText] = useState("");
   const auth = useAuth();
   const uid = auth.currentUser;
   const nickName = auth.currentUser?.displayName;
 
-  function sendMessage(e: any) {
+  const sendMessage = async (e: any) => {
     e.preventDefault();
-
     if (text === "") return;
-    addDoc(collection(db, "message"), {
-      text: text,
-      uid: uid?.uid,
-      nickName: nickName,
-      createdAt: serverTimestamp(),
-      collection: {},
+
+    const q = query(collection(db, "message"));
+    const querySnapshot = await getDocs(q);
+    const queryData = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    console.log(queryData);
+
+    queryData.map(async () => {
+      await setDoc(doc(db, `message/${id.id}/reply`, text), {
+        text: text,
+        uid: uid?.uid,
+        nickName: nickName,
+        createdAt: serverTimestamp(),
+      });
     });
 
     setText("");
-  }
+  };
 
   return (
     <>
@@ -41,4 +57,4 @@ const Tweet = () => {
   );
 };
 
-export default Tweet;
+export default Reply;
