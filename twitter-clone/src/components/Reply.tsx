@@ -1,42 +1,43 @@
 import { db, useAuth } from "../hooks/firebase";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
-  addDoc,
   collection,
   serverTimestamp,
-  getDoc,
+  getDocs,
+  setDoc,
   doc,
+  query,
 } from "firebase/firestore";
 
-const Reply = () => {
+const Reply = (id: any) => {
   const [text, setText] = useState("");
   const auth = useAuth();
   const uid = auth.currentUser;
   const nickName = auth.currentUser?.displayName;
 
-  function sendMessage(e: any) {
+  const sendMessage = async (e: any) => {
     e.preventDefault();
-
     if (text === "") return;
-    // addDoc(collection(db, "message"), {
-    //   text: text,
-    //   uid: uid?.uid,
-    //   nickName: nickName,
-    //   createdAt: serverTimestamp(),
-    // });
+
+    const q = query(collection(db, "message"));
+    const querySnapshot = await getDocs(q);
+    const queryData = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    console.log(queryData);
+
+    queryData.map(async () => {
+      await setDoc(doc(db, `message/${id.id}/reply`, text), {
+        text: text,
+        uid: uid?.uid,
+        nickName: nickName,
+        createdAt: serverTimestamp(),
+      });
+    });
 
     setText("");
-  }
-
-  const getData = async () => {
-    const docRef = doc(db, "message", "message");
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    }
   };
-
-  getData();
 
   return (
     <>
