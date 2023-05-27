@@ -4,6 +4,7 @@ import Content from "./pages/Content";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Post from "./components/Post";
+import Text from "./components/Text";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/post" element={<Post />} />
+          <Route path="/text" element={<Text />} />
         </Routes>
       </Router>
     </div>

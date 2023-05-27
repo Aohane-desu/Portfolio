@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../hooks/firebase";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type timeStamp = {
   seconds: number;
@@ -29,14 +30,27 @@ const Post = () => {
     //リアルタイムで取得
     onSnapshot(dataQuery, (tweet) => {
       setMessage(tweet.docs.map((doc) => doc.data() as dataProps));
+      console.log(
+        tweet.docs.forEach((doc) => {
+          console.log(doc.id, "=>", doc.data());
+        })
+      );
     });
   }, []);
+
+  //掲示板の中身へ
+  const navigation = useNavigate();
+
   return (
     <>
       <Navbar />
       <div className="w-[90vw] h-screen mx-auto mt-10 ">
         {message.map((data) => (
-          <div className="p-10 mt-10 border" key={Math.random()}>
+          <div
+            className="p-10 mt-10 border cursor-pointer"
+            key={Math.random()}
+            onClick={() => navigation("/text", { state: { text: data.text } })}
+          >
             {/* <p className="text-3xl">{data.nickName}</p> */}
             <p className="text-2xl">{data.text}</p>
           </div>
