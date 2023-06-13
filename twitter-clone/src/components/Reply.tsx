@@ -23,7 +23,6 @@ const Reply = (id: any) => {
     const querySnapshot = await getDocs(q);
     const queryData = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
-      id: doc.id,
     }));
     console.log(queryData);
 
