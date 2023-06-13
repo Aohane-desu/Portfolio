@@ -6,6 +6,10 @@ const Main = () => {
   const sendTwitter = () => {
     navigation("/post");
   };
+
+  const sendTyping = () => {
+    navigation("/typing");
+  };
   return (
     <>
       <Navbar />
@@ -14,7 +18,9 @@ const Main = () => {
         <button className="w-96 border" onClick={sendTwitter}>
           Twitter-Clone
         </button>
-        <button className="w-96 border">Typing-game</button>
+        <button className="w-96 border" onClick={sendTyping}>
+          Typing-game
+        </button>
       </div>
     </>
   );
