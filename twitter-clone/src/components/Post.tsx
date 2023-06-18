@@ -52,9 +52,34 @@ const Post = () => {
     <>
       <Navbar />
       <div className="w-[90vw] h-screen mx-auto mt-10 ">
+        <h1 className="text-center text-3xl  mb-10">匿名掲示板</h1>
+        <p>
+          1.
+          個人情報の公開は禁止です。他のユーザーの個人情報や特定可能な情報を投稿しないでください。
+        </p>
+        <p>
+          2.
+          誹謗中傷や差別的な表現は禁止です。他のユーザーを攻撃するような投稿は行わないでください。
+        </p>
+        <p>
+          3.
+          違法行為や暴力的な内容の投稿は禁止です。犯罪行為の促進や危険な行動を助長するような投稿は行わないでください。
+        </p>
+        <p>
+          4.
+          他のユーザーへの尊重と礼儀を守ってください。良識ある行動を心掛けましょう。
+        </p>
+        <p>
+          5.
+          管理者の指示に従ってください。掲示板の運営に関する指示や要請に対しては、協力して対応してください。
+        </p>
+        <p>
+          6.
+          ルール違反の報告や問題の報告は適切な方法で行ってください。管理者に対して違反の報告や問題の報告ができる方法を提供していますので、それを利用してください。
+        </p>
         {message.map((data) => (
           <div
-            className="p-10 mt-10 border cursor-pointer"
+            className="p-10 mt-10  rounded-xl border border-[#53b39a] cursor-pointer hover:bg-[#53b39a] hover:text-white"
             key={Math.random()}
             onClick={() =>
               navigation("/text", { state: { text: data.text, id: data.id } })

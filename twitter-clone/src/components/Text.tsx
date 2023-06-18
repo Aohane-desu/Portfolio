@@ -15,6 +15,7 @@ type replyProps = {
   nickName: string;
   createdAt: timeStamp;
   id: string;
+  rowNum: number;
 };
 
 const Text = () => {
@@ -28,7 +29,7 @@ const Text = () => {
     //データ取得
     const fetchData = async () => {
       const replyData = collection(db, `message/${id}/reply`);
-      const dataQuery = query(replyData, orderBy("createdAt", "desc"));
+      const dataQuery = query(replyData, orderBy("createdAt", "asc"));
       //リアルタイムで取得
       onSnapshot(dataQuery, (tweet) => {
         const newData = tweet.docs.map((doc) => {
@@ -49,7 +50,8 @@ const Text = () => {
         <div>
           {reply.map((data) => (
             <>
-              <div className="border p-5 mt-5" key={Math.random()}>
+              <div className="border p-5 mt-5  rounded-xl" key={data.rowNum}>
+                <p>{data.rowNum}</p>
                 <p className=" text-xl">{data.text}</p>
               </div>
             </>
