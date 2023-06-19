@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { Ranking } from "./Ranking";
+import { Ranking } from "./Ranking";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -48,7 +48,7 @@ const GameOver = () => {
               <Link to="/typingmain">Retry</Link>
             </button>
           </div>
-          {/* <Ranking /> */}
+          <Ranking />
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Ranking } from "./Ranking";
 const Typing = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const Typing = () => {
                 <Link to="/TypingMain">Play</Link>
               </button>
             </div>
-            {/* <Ranking /> */}
+            <Ranking />
           </div>
         </div>
       </div>
