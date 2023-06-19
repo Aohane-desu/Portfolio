@@ -78,9 +78,9 @@ function TypingMain() {
   }, [time]);
   //ここまでカウントダウン
 
-  //   function sendResults() {
-  //     const auth = useAuth();
-  //     const  uid  = auth.currentUser;
+  // function sendResults() {
+  //   const auth = useAuth();
+  //   const  uid  = auth.currentUser;
 
   //     db.collection("typing").add({
   //       uid,

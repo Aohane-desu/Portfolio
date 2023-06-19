@@ -21,6 +21,7 @@ const Main = () => {
         <h1 className="text-3xl mt-10">
           ようこそ！{currentUser?.displayName}さん！
         </h1>
+        <p>ポートフォリオです。作成したものを掲載しています。</p>
         <div className="flex justify-around mt-10 flex-wrap">
           <button
             className="w-80 h-80 mb-10 border bg-[#53b39a] text-white rounded-full text-3xl hover:opacity-80"

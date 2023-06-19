@@ -79,13 +79,12 @@ const Post = () => {
         </p>
         {message.map((data) => (
           <div
-            className="p-10 mt-10  rounded-xl border border-[#53b39a] cursor-pointer hover:bg-[#53b39a] hover:text-white"
+            className="p-10 mt-5 rounded-xl border border-[#53b39a] cursor-pointer hover:bg-[#53b39a] hover:text-white"
             key={Math.random()}
             onClick={() =>
               navigation("/text", { state: { text: data.text, id: data.id } })
             }
           >
-            {/* <p className="text-3xl">{data.nickName}</p> */}
             <p className="text-2xl">{data.text}</p>
           </div>
         ))}
