@@ -2,14 +2,12 @@ import { useEffect } from "react";
 import { db } from "../hooks/firebase";
 import { useState } from "react";
 import {
-  getDocs,
   collection,
   query,
   orderBy,
   limit,
   onSnapshot,
 } from "firebase/firestore";
-// import { v4 as uuidv4 } from "uuid";
 
 type timeStamp = {
   seconds: number;
@@ -28,8 +26,6 @@ export const Ranking = () => {
 
   useEffect(() => {
     const getData = async () => {
-      //   const querySnapshot = await getDocs(collection(db, "score"));
-      //   querySnapshot.forEach((doc) => setRank(doc.data() as rankingProps[]));
       const postData = collection(db, "score");
       const dataQuery = query(postData, orderBy("result", "desc"), limit(5));
       //リアルタイムで取得
@@ -43,7 +39,6 @@ export const Ranking = () => {
     };
 
     getData();
-    console.log(rank);
   }, []); //スコアが出るときに変更する
 
   return (
@@ -52,7 +47,7 @@ export const Ranking = () => {
       {rank.map(({ result, player }, num) => (
         <div
           className="flex items-center flex-wrap w-[100%] text-start pl-2 py-2 border-b-2 border-black"
-          //   key={uuidv4()}
+          key={num}
         >
           <p>{num + 1 + "位 :"}</p>
           <p className=" flex-1 border-black border-r-2 pl-2">{player}</p>

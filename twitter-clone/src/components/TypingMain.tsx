@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Count } from "./Count";
 import { TextContent } from "./TextContent";
 import { useNavigate } from "react-router-dom";
-import { db, useAuth, useUser } from "../hooks/firebase";
+import { db, useAuth } from "../hooks/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 function TypingMain() {
@@ -60,7 +60,7 @@ function TypingMain() {
 
   //ここからカウントダウン
   const navigation = useNavigate();
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(10);
 
   useEffect(() => {
     function startCountDown() {
@@ -86,9 +86,10 @@ function TypingMain() {
       try {
         await addDoc(collection(db, "score"), {
           score: keyNumber,
-          misstype: missType - keyNumber - 1,
+          misstype: missType - keyNumber - 2,
           result: keyNumber - (missType - keyNumber) + 1,
           player: displayName,
+          createdAt: new Date(),
         });
         console.log("データを送信しました");
       } catch (error) {
@@ -100,22 +101,24 @@ function TypingMain() {
   }
 
   return (
-    <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
-      <div
-        className="w-[80vw] mx-auto bg-slate-200
+    <>
+      <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
+        <div
+          className="w-[80vw] mx-auto bg-[#12a880]
         h-[80vh] table-cell rounded p-10"
-      >
-        <div>
-          <div className="text-center text-5xl">{time}</div>
+        >
+          <div>
+            <div className="text-center text-5xl">{time}</div>
+          </div>
+          <Count keyNumber={keyNumber} missType={missType} />
+          <TextContent
+            setWord={setWord}
+            currentStage={currentStage}
+            word={word}
+          />
         </div>
-        <Count keyNumber={keyNumber} missType={missType} />
-        <TextContent
-          setWord={setWord}
-          currentStage={currentStage}
-          word={word}
-        />
       </div>
-    </div>
+    </>
   );
 }
 
