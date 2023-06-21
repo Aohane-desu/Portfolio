@@ -4,14 +4,12 @@ import { useState } from "react";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBR-y2Y3TwBawkwI6PifawRqkuozWHZlso",
-  authDomain: "twitter-clone-74163.firebaseapp.com",
+  apiKey: import.meta.env.VITE_PUBLIC_API_KEY,
+  authDomain: import.meta.env.VITE_PUBLIC_AUTH_DOMAIN,
   projectId: "twitter-clone-74163",
   storageBucket: "twitter-clone-74163.appspot.com",
   messagingSenderId: "766961091857",
   appId: "1:766961091857:web:3bfa063397dca3fe8678b0",
-  // apiKey: import.meta.env.REACT_PUBLIC_API_KEY,
-  // authDomain: import.meta.env.REACT_PUBLIC_AUTH_DOMAIN,
 };
 const app = initializeApp(firebaseConfig);
 

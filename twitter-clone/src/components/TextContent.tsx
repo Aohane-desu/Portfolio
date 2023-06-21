@@ -5,13 +5,10 @@ export const TextContent = (props: any) => {
 
   //Apiで表示する中身を取得
   useEffect(() => {
-    const res = fetch(apiUrl)
+    fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
         props.setWord(data.content);
-      })
-      .catch((error) => {
-        console.log("error");
       });
   }, [props.currentStage]);
   return (

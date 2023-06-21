@@ -60,7 +60,7 @@ function TypingMain() {
 
   //ここからカウントダウン
   const navigation = useNavigate();
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(30);
 
   useEffect(() => {
     function startCountDown() {

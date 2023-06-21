@@ -1,5 +1,4 @@
 import { FaKiwiBird } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useUser } from "../hooks/firebase";
 import { useAuth } from "../hooks/firebase";
