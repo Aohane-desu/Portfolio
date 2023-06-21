@@ -4,6 +4,7 @@ import { Count } from "./Count";
 import { TextContent } from "./TextContent";
 import { useNavigate } from "react-router-dom";
 import { db, useAuth } from "../hooks/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 function TypingMain() {
   // ここからタイピング
@@ -59,7 +60,7 @@ function TypingMain() {
 
   //ここからカウントダウン
   const navigation = useNavigate();
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(10);
 
   useEffect(() => {
     function startCountDown() {
@@ -72,43 +73,52 @@ function TypingMain() {
       startCountDown();
     } else {
       //データベースにタイプ数、ミスタイプ数、ID名を保存する
-      //   sendResults();
+      sendResults();
       navigation("/GameOver");
     }
   }, [time]);
   //ここまでカウントダウン
+  const auth = useAuth();
+  const currentUser = auth.currentUser;
+  async function sendResults() {
+    const sendData = async () => {
+      const displayName = currentUser ? currentUser.displayName : null;
+      try {
+        await addDoc(collection(db, "score"), {
+          score: keyNumber,
+          misstype: missType - keyNumber - 2,
+          result: keyNumber - (missType - keyNumber) + 1,
+          player: displayName,
+          createdAt: new Date(),
+        });
+        console.log("データを送信しました");
+      } catch (error) {
+        console.error("データの送信エラー:", error);
+      }
+    };
 
-  //   function sendResults() {
-  //     const auth = useAuth();
-  //     const  uid  = auth.currentUser;
-
-  //     db.collection("typing").add({
-  //       uid,
-  //       score: keyNumber,
-  //       misstype: missType - keyNumber - 1,
-  //       result: keyNumber - (missType - keyNumber) + 1,
-  //       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-  //       player: auth.currentUser.displayName,
-  //     });
-  //   }
+    await sendData();
+  }
 
   return (
-    <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
-      <div
-        className="w-[80vw] mx-auto bg-slate-200
+    <>
+      <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
+        <div
+          className="w-[80vw] mx-auto bg-[#12a880]
         h-[80vh] table-cell rounded p-10"
-      >
-        <div>
-          <div className="text-center text-5xl">{time}</div>
+        >
+          <div>
+            <div className="text-center text-5xl">{time}</div>
+          </div>
+          <Count keyNumber={keyNumber} missType={missType} />
+          <TextContent
+            setWord={setWord}
+            currentStage={currentStage}
+            word={word}
+          />
         </div>
-        <Count keyNumber={keyNumber} missType={missType} />
-        <TextContent
-          setWord={setWord}
-          currentStage={currentStage}
-          word={word}
-        />
       </div>
-    </div>
+    </>
   );
 }
 

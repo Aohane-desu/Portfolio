@@ -17,12 +17,6 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password);
-    // .then((useCredential) => {
-    //   const user = useCredential.user;
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
   };
 
   const { register, handleSubmit } = useForm<Inputs>();
@@ -36,6 +30,16 @@ const Login = () => {
 
   return (
     <div>
+      <h1 className="text-center text-3xl mt-10">デモサイト　ログイン</h1>
+      <div className="flex flex-col items-center">
+        <p>
+          ゲストユーザーでのログインは、以下のメールアドレスとパスワードをお使いください。
+        </p>
+        <div>
+          <p>メールアドレス:gest@gest.com</p>
+          <p>パスワード:gest12345</p>
+        </div>
+      </div>
       <form
         onClick={handleSubmit(onSubmit)}
         className="flex flex-col items-center [&>div]:mt-10 [&>div]:flex [&>div]:flex-row [&_label]:w-[20vw] [&_input]:w-[30vw] [&_input]:rounded [&_input]:border"
@@ -60,7 +64,10 @@ const Login = () => {
             })}
           />
         </div>
-        <button type="submit" className="bg-green-100 w-44 rounded-xl mt-10">
+        <button
+          type="submit"
+          className="bg-green-100 w-44 rounded-xl mt-10 hover:text-white hover:bg-green-800"
+        >
           ログイン
         </button>
       </form>

@@ -14,6 +14,7 @@ const Reply = (id: any) => {
   const auth = useAuth();
   const uid = auth.currentUser;
   const nickName = auth.currentUser?.displayName;
+  const [rowNum, setRowNum] = useState(1);
 
   const sendMessage = async (e: any) => {
     e.preventDefault();
@@ -32,24 +33,26 @@ const Reply = (id: any) => {
         uid: uid?.uid,
         nickName: nickName,
         createdAt: serverTimestamp(),
+        rowNum: rowNum,
       });
     });
 
+    setRowNum((prevRowNum) => prevRowNum + 1);
     setText("");
   };
 
   return (
     <>
       <form onSubmit={sendMessage}>
-        <div className="flex fixed bottom-10 right-10 left-10">
+        <div className="flex justify-center fixed bottom-10 right-10 left-10">
           <input
             type="text"
-            className="border-b border-black w-full pl-2 outline-none"
+            className="border-b border-black w-[80vw] pl-2 outline-none"
             placeholder="書き込もう！"
             onChange={(e) => setText(e.target.value)}
             value={text}
           />
-          <button className="border p-2 rounded-xl">Tweet</button>
+          <button className="border p-2 rounded-xl">送信</button>
         </div>
       </form>
     </>

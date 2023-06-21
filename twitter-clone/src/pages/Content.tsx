@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useAuth } from "../hooks/firebase";
 import { User, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Loading from "../components/Loading";
 import Nickname from "../components/Nickname";
 import Main from "./Main";
 
@@ -30,9 +29,7 @@ const Content = () => {
     }
   };
 
-  if (!auth.currentUser) {
-    return <Loading />;
-  } else if (!auth.currentUser?.displayName) {
+  if (!auth.currentUser?.displayName) {
     return (
       <>
         <Nickname setName={setName} name={name} sendName={sendName} />

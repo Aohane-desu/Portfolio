@@ -8,8 +8,27 @@ import Text from "./components/Text";
 import Typing from "./components/Typing";
 import TypingMain from "./components/TypingMain";
 import GameOver from "./components/GameOver";
+import { useAuth } from "./hooks/firebase";
+import { useEffect } from "react";
 
 function App() {
+  //画面を閉じた際のログアウト処理
+  const auth = useAuth();
+  useEffect(() => {
+    const handleSignOut = async () => {
+      try {
+        await auth.signOut();
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    window.addEventListener("beforeunload", handleSignOut);
+    return () => {
+      window.removeEventListener("beforeunload", handleSignOut);
+    };
+  }, []);
+
   return (
     <div>
       <Router>

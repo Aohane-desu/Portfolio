@@ -21,10 +21,10 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 left-0 h-10 shadow flex items-center justify-between px-5">
       <div className="flex">
-        <Link to="/main" className="pr-10">
+        <Link to="/main" className="pr-10 flex gap-1 items-center">
           <FaKiwiBird color={"green"} />
+          <p>ホームへ</p>
         </Link>
-        <AiFillHeart color={"green"} />
       </div>
       <div className="flex">
         <p className="pr-10">
