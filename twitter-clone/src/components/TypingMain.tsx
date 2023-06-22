@@ -86,7 +86,7 @@ function TypingMain() {
       try {
         await addDoc(collection(db, "score"), {
           score: keyNumber,
-          misstype: missType - keyNumber - 2,
+          misstype: missType - keyNumber - 1,
           result: keyNumber - (missType - keyNumber) + 1,
           player: displayName,
           createdAt: new Date(),
