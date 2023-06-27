@@ -12,7 +12,11 @@ type Inputs = {
 };
 
 const Register = () => {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit, formState } = useForm<Inputs>({
+    reValidateMode: "onSubmit",
+    criteriaMode: "all",
+  });
+  const { errors } = formState;
 
   const auth = useAuth();
   const currentUser = useUser();
@@ -60,6 +64,7 @@ const Register = () => {
             })}
           />
         </div>
+        <p>{errors.email?.message}</p>
         <div>
           <label htmlFor="password">パスワード</label>
           <input
@@ -70,6 +75,7 @@ const Register = () => {
             })}
           />
         </div>
+        <p>{errors.password?.message}</p>
         <div>
           <label htmlFor="password">パスワード再入力</label>
           <input
@@ -80,6 +86,7 @@ const Register = () => {
             })}
           />
         </div>
+        <p>{errors.confirmPassword?.message}</p>
         <button type="submit" className="mt-10 w-44 rounded-xl bg-green-100">
           登録
         </button>
