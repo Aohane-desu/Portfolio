@@ -1,5 +1,5 @@
 import { db, useAuth } from "../hooks/firebase";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   collection,
   serverTimestamp,
@@ -16,7 +16,7 @@ const Reply = (id: any) => {
   const nickName = auth.currentUser?.displayName;
   const [rowNum, setRowNum] = useState(1);
 
-  const sendMessage = async (e: any) => {
+  const sendMessage = async (e: FormEvent) => {
     e.preventDefault();
     if (text === "") return;
 
@@ -44,15 +44,15 @@ const Reply = (id: any) => {
   return (
     <>
       <form onSubmit={sendMessage}>
-        <div className="flex justify-center fixed bottom-10 right-10 left-10">
+        <div className="fixed bottom-10 left-10 right-10 flex justify-center">
           <input
             type="text"
-            className="border-b border-black w-[80vw] pl-2 outline-none"
+            className="w-[80vw] border-b border-black pl-2 outline-none"
             placeholder="書き込もう！"
             onChange={(e) => setText(e.target.value)}
             value={text}
           />
-          <button className="border p-2 rounded-xl">送信</button>
+          <button className="rounded-xl border p-2">送信</button>
         </div>
       </form>
     </>

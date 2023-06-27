@@ -1,4 +1,4 @@
-export const Count = (props: any) => {
+export const Count = (props: { keyNumber: number; missType: number }) => {
   return (
     <div className="text-start">
       <p>タイプ数：{props.keyNumber}</p>

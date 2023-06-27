@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/firebase";
 import { User, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ const Content = () => {
   const currentUser: User | null = auth.currentUser;
   const navigate = useNavigate();
 
-  const sendName = (e: any) => {
+  const sendName = (e: FormEvent) => {
     e.preventDefault();
 
     if (!currentUser) {

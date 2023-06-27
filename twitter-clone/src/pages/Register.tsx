@@ -45,10 +45,10 @@ const Register = () => {
 
   return (
     <div className="h-screen p-10">
-      <h1 className="text-4xl text-center mb-10">アカウントを作成</h1>
+      <h1 className="mb-10 text-center text-4xl">アカウントを作成</h1>
       <form
         onClick={handleSubmit(onSubmit)}
-        className="flex flex-col items-center [&>div]:mt-10 [&>div]:flex [&>div]:flex-row [&_label]:w-[20vw] [&_input]:w-[30vw] [&_input]:rounded [&_input]:border"
+        className="flex flex-col items-center [&>div]:mt-10 [&>div]:flex [&>div]:flex-row [&_input]:w-[30vw] [&_input]:rounded [&_input]:border [&_label]:w-[20vw]"
       >
         <div>
           <label htmlFor="email">メールアドレス</label>
@@ -80,7 +80,7 @@ const Register = () => {
             })}
           />
         </div>
-        <button type="submit" className="bg-green-100 w-44 rounded-xl mt-10">
+        <button type="submit" className="mt-10 w-44 rounded-xl bg-green-100">
           登録
         </button>
       </form>

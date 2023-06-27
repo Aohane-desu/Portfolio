@@ -102,10 +102,10 @@ function TypingMain() {
 
   return (
     <>
-      <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
+      <div className="flex h-screen w-screen flex-row items-center justify-center text-center">
         <div
-          className="w-[80vw] mx-auto bg-[#12a880]
-        h-[80vh] table-cell rounded p-10"
+          className="mx-auto table-cell h-[80vh]
+        w-[80vw] rounded bg-[#12a880] p-10"
         >
           <div>
             <div className="text-center text-5xl">{time}</div>

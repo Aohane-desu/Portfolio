@@ -50,7 +50,7 @@ const Text = () => {
         <div>
           {reply.map((data) => (
             <>
-              <div className="border p-5 mt-5  rounded-xl" key={data.rowNum}>
+              <div className="mt-5 rounded-xl border  p-5" key={data.rowNum}>
                 <p>{data.rowNum}</p>
                 <p className=" text-xl">{data.text}</p>
               </div>

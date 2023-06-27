@@ -1,5 +1,5 @@
 import { db, useAuth } from "../hooks/firebase";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const Tweet = () => {
@@ -8,7 +8,7 @@ const Tweet = () => {
   const uid = auth.currentUser;
   const nickName = auth.currentUser?.displayName;
 
-  function sendMessage(e: any) {
+  function sendMessage(e: FormEvent) {
     e.preventDefault();
 
     if (text === "") return;
@@ -26,18 +26,18 @@ const Tweet = () => {
   return (
     <>
       <form onSubmit={sendMessage}>
-        <div className="flex justify-center fixed bottom-5 right-5 bg-white">
-          <div className="w-[30vw] h-[30vh] bg-[#5dc9ad] rounded p-5">
-            <h2 className="text-xl pb-5 font-bold">掲示板を作成</h2>
+        <div className="fixed bottom-5 right-5 flex justify-center bg-white">
+          <div className="h-[30vh] w-[30vw] rounded bg-[#5dc9ad] p-5">
+            <h2 className="pb-5 text-xl font-bold">掲示板を作成</h2>
             <label htmlFor="">タイトル</label>
             <input
               type="text"
-              className="border-b border-black pl-2 mt-1 outline-none block w-full"
+              className="mt-1 block w-full border-b border-black pl-2 outline-none"
               placeholder="How to use React?"
               onChange={(e) => setText(e.target.value)}
               value={text}
             />
-            <button className="border p-2 rounded-xl block bg-white mt-16 mx-auto w-[60%] hover:bg-[#f7f7f7]">
+            <button className="mx-auto mt-16 block w-[60%] rounded-xl border bg-white p-2 hover:bg-[#f7f7f7]">
               作成
             </button>
           </div>
