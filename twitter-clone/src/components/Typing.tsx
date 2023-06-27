@@ -10,7 +10,7 @@ const Typing = () => {
           className="mx-auto table-cell h-[80vh]
         w-[80vw] rounded bg-[#12a880] p-10"
         >
-          <h1 className="text-5xl">English typing</h1>
+          <h1 className="mb-10 text-5xl text-white">English typing</h1>
           <div className="mt-8 flex justify-around">
             <div>
               <button className="mt-10 h-[150px] w-[200px] cursor-pointer rounded-xl bg-[#ffffff] text-3xl hover:opacity-80">
