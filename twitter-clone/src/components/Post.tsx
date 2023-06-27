@@ -51,8 +51,8 @@ const Post = () => {
   return (
     <>
       <Navbar />
-      <div className="w-[90vw] h-screen mx-auto mt-10 ">
-        <h1 className="text-center text-3xl  mb-10">匿名掲示板</h1>
+      <div className="mx-auto mt-10 h-screen w-[90vw] ">
+        <h1 className="mb-10 text-center  text-3xl">匿名掲示板</h1>
         <p>
           1.
           個人情報の公開は禁止です。他のユーザーの個人情報や特定可能な情報を投稿しないでください。
@@ -79,7 +79,7 @@ const Post = () => {
         </p>
         {message.map((data) => (
           <div
-            className="p-10 mt-5 rounded-xl border border-[#53b39a] cursor-pointer hover:bg-[#53b39a] hover:text-white"
+            className="mt-5 cursor-pointer rounded-xl border border-[#53b39a] p-10 hover:bg-[#53b39a] hover:text-white"
             key={Math.random()}
             onClick={() =>
               navigation("/text", { state: { text: data.text, id: data.id } })

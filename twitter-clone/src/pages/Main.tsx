@@ -18,27 +18,27 @@ const Main = () => {
     <>
       <Navbar />
       <div className="text-center">
-        <h1 className="text-3xl mt-10">
+        <h1 className="mt-10 text-3xl">
           ようこそ！{currentUser?.displayName}さん！
         </h1>
         <p>ポートフォリオです。作成したものを掲載しています。</p>
-        <div className="flex justify-around mt-10 flex-wrap">
+        <div className="mt-10 flex flex-wrap justify-around">
           <button
-            className="w-80 h-80 mb-10 border bg-[#53b39a] text-white rounded-full text-3xl hover:opacity-80"
+            className="mb-10 h-80 w-80 rounded-full border bg-[#53b39a] text-3xl text-white hover:opacity-80"
             onClick={sendTwitter}
           >
             匿名掲示板
           </button>
           <button
-            className="w-80 h-80 mb-10 border bg-[#53b39a] text-white rounded-full text-3xl hover:opacity-80"
+            className="mb-10 h-80 w-80 rounded-full border bg-[#53b39a] text-3xl text-white hover:opacity-80"
             onClick={sendTyping}
           >
             タイピングゲーム
           </button>
-          <button className="w-80 h-80 mb-10 border bg-[#a8a8a8] text-white rounded-full text-3xl">
+          <button className="mb-10 h-80 w-80 rounded-full border bg-[#a8a8a8] text-3xl text-white">
             Coming soon...
           </button>
-          <button className="w-80 h-80 mb-10 border bg-[#a8a8a8] text-white rounded-full text-3xl">
+          <button className="mb-10 h-80 w-80 rounded-full border bg-[#a8a8a8] text-3xl text-white">
             Coming soon...
           </button>
         </div>

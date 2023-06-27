@@ -8,14 +8,14 @@ const Nickname = (props: {
   return (
     <div>
       <div className="h-screen w-full p-10 ">
-        <h1 className="text-5xl text-center">ニックネームを登録</h1>
-        <p className="text-center mt-5">
+        <h1 className="text-center text-5xl">ニックネームを登録</h1>
+        <p className="mt-5 text-center">
           はじめまして。ニックネームを登録してください。
         </p>
-        <p className="text-center mt-5">
+        <p className="mt-5 text-center">
           （注）一度付けたニックネームは変更できません。
         </p>
-        <div className="w-[90vw] mx-auto mt-10">
+        <div className="mx-auto mt-10 w-[90vw]">
           <form onSubmit={props.sendName}>
             <div className="flex justify-center">
               <label htmlFor="name" className="text-2xl">
@@ -24,13 +24,13 @@ const Nickname = (props: {
               <input
                 type="text"
                 id="name"
-                className="w-[50%] outline-none border-b border-black pl-2 ml-4 text-2xl"
+                className="ml-4 w-[50%] border-b border-black pl-2 text-2xl outline-none"
                 onChange={(e) => props.setName(e.target.value)}
                 value={props.name}
               />
             </div>
-            <div className=" flex justify-center items-center">
-              <button className="w-96 mt-10 border rounded-xl border-black px-10 py-5">
+            <div className=" flex items-center justify-center">
+              <button className="mt-10 w-96 rounded-xl border border-black px-10 py-5">
                 登録
               </button>
             </div>

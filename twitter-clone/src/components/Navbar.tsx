@@ -18,9 +18,9 @@ const Navbar = () => {
     }
   };
   return (
-    <header className="sticky top-0 left-0 h-10 shadow flex items-center justify-between px-5">
+    <header className="sticky left-0 top-0 flex h-10 items-center justify-between px-5 shadow">
       <div className="flex">
-        <Link to="/main" className="pr-10 flex gap-1 items-center">
+        <Link to="/main" className="flex items-center gap-1 pr-10">
           <FaKiwiBird color={"green"} />
           <p>ホームへ</p>
         </Link>

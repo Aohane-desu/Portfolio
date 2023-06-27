@@ -4,7 +4,7 @@ const Loading = () => {
   const moveRef = useRef<HTMLDivElement>(null);
   useEffect(() => {}, []);
   return (
-    <div className="h-screen flex justify-center items-center" ref={moveRef}>
+    <div className="flex h-screen items-center justify-center" ref={moveRef}>
       <BsArrowClockwise className="animate-spin text-5xl" />
     </div>
   );

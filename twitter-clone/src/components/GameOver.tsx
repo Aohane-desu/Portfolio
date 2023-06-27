@@ -38,23 +38,23 @@ const GameOver = () => {
   return (
     <>
       <Navbar />
-      <div className="w-screen h-screen text-center flex flex-row justify-center items-center">
+      <div className="flex h-screen w-screen flex-row items-center justify-center text-center">
         <div
-          className="w-[80vw] mx-auto bg-[#12a880]
-        h-[80vh] table-cell rounded p-10"
+          className="mx-auto table-cell h-[80vh]
+        w-[80vw] rounded bg-[#12a880] p-10"
         >
           <h5 className="text-5xl">Game Over</h5>
-          <div className="flex justify-around mt-8">
+          <div className="mt-8 flex justify-around">
             <div>
               {score.map(({ score, misstype, result }) => (
                 <div className="text-start">
                   <p>タイプ数 :{score}</p>
                   <p> ミスタイプ数 :{misstype}</p>
-                  <p className="text-3xl mt-[30px]">Your Score : {result}</p>
+                  <p className="mt-[30px] text-3xl">Your Score : {result}</p>
                 </div>
               ))}
 
-              <button className="rounded-xl bg-white w-[200px] h-[150px] mt-10 cursor-pointer text-3xl hover:opacity-80">
+              <button className="mt-10 h-[150px] w-[200px] cursor-pointer rounded-xl bg-white text-3xl hover:opacity-80">
                 <Link to="/typingmain">Retry</Link>
               </button>
             </div>

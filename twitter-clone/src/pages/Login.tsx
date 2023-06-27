@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl mt-10">デモサイト　ログイン</h1>
+      <h1 className="mb-5 mt-10 text-center text-3xl">デモサイト　ログイン</h1>
       <div className="flex flex-col items-center">
         <p>
           ゲストユーザーでのログインは、以下のメールアドレスとパスワードをお使いください。
@@ -42,7 +42,7 @@ const Login = () => {
       </div>
       <form
         onClick={handleSubmit(onSubmit)}
-        className="flex flex-col items-center [&>div]:mt-10 [&>div]:flex [&>div]:flex-row [&_label]:w-[20vw] [&_input]:w-[30vw] [&_input]:rounded [&_input]:border"
+        className="flex flex-col items-center [&>div]:mt-10 [&>div]:flex [&>div]:flex-row [&_input]:w-[30vw] [&_input]:rounded [&_input]:border [&_label]:w-[20vw]"
       >
         <div>
           <label htmlFor="email">メールアドレス</label>
@@ -66,12 +66,12 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="bg-green-100 w-44 rounded-xl mt-10 hover:text-white hover:bg-green-800"
+          className=" mt-10 w-44 rounded-xl bg-green-100 hover:bg-green-800 hover:text-white"
         >
           ログイン
         </button>
       </form>
-      <p className="text-center mt-10">
+      <p className="mt-10 text-center">
         新規登録は
         <Link to="/register" className="text-blue-400 ">
           こちら

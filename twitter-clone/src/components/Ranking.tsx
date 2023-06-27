@@ -42,15 +42,15 @@ export const Ranking = () => {
   }, []); //スコアが出るときに変更する
 
   return (
-    <div className=" w-[300px] bg-slate-200 rounded p-5">
-      <h3 className="text-3xl border-b-2 border-black p-3">ランキング</h3>
+    <div className=" w-[300px] rounded bg-slate-200 p-5">
+      <h3 className="border-b-2 border-black p-3 text-3xl">ランキング</h3>
       {rank.map(({ result, player }, num) => (
         <div
-          className="flex items-center flex-wrap w-[100%] text-start pl-2 py-2 border-b-2 border-black"
+          className="flex w-[100%] flex-wrap items-center border-b-2 border-black py-2 pl-2 text-start"
           key={num}
         >
           <p>{num + 1 + "位 :"}</p>
-          <p className=" flex-1 border-black border-r-2 pl-2">{player}</p>
+          <p className=" flex-1 border-r-2 border-black pl-2">{player}</p>
           <p className=" w-[100px] pl-2">Result: {result}</p>
         </div>
       ))}
